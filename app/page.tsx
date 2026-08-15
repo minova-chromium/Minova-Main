@@ -14,7 +14,7 @@ const projects = [
   {
     id: "cinema",
     name: "Minova Cinema",
-    eyebrow: "Android TV · Version 2.2.1",
+    eyebrow: "Android TV · Version 2.2.2",
     description:
       "A finished, cinema-first Android TV client that brings a Plex library to the big screen with remote-first navigation, direct play, 4K support, and private local connections.",
     tags: ["Android TV", "Plex", "4K playback", "Living room"],
@@ -23,7 +23,7 @@ const projects = [
     repo:
       "https://github.com/minova-chromium/Minova-Android-Tv-Cinema-Application",
     download:
-      "https://github.com/minova-chromium/Minova-Android-Tv-Cinema-Application/releases/download/v2.2.1/Minova-Cinema-2.2.1.apk",
+      "https://github.com/minova-chromium/Minova-Android-Tv-Cinema-Application/releases/download/v2.2.2/Minova-Cinema-2.2.2.apk",
   },
 ];
 
@@ -64,8 +64,14 @@ export default function Home() {
           </div>
           <div className="hero-downloads" aria-label="Direct application downloads">
             <span>DIRECT DOWNLOADS</span>
-            <a data-product-download="chromium" href={projects[0].download}>Chromium for Windows <b aria-hidden="true">↓</b></a>
-            <a data-product-download="cinema" href={projects[1].download}>Cinema for Android TV <b aria-hidden="true">↓</b></a>
+            <div className="hero-download-item">
+              <a className="hero-project-link" href={projects[0].site}>Visit Chromium website <b aria-hidden="true">↗</b></a>
+              <a data-product-download="chromium" href={projects[0].download}>Chromium for Windows <b aria-hidden="true">↓</b></a>
+            </div>
+            <div className="hero-download-item">
+              <a className="hero-project-link" href={projects[1].site}>Visit Cinema website <b aria-hidden="true">↗</b></a>
+              <a data-product-download="cinema" href={projects[1].download}>Cinema for Android TV <b aria-hidden="true">↓</b></a>
+            </div>
           </div>
         </div>
 
@@ -89,7 +95,7 @@ export default function Home() {
           </div>
           <div className="floating-card floating-build">
             <span className="mini-icon">TV</span>
-            <div><small>ANDROID TV · <span data-product-version="cinema">2.2.1</span></small><strong>Minova Cinema</strong></div>
+            <div><small>ANDROID TV · <span data-product-version="cinema">2.2.2</span></small><strong>Minova Cinema</strong></div>
           </div>
         </div>
       </section>
@@ -139,7 +145,7 @@ export default function Home() {
                       <div className="tv-screen"><img src="/brand/minova-symbol-color.svg" alt="" /><span>MINOVA CINEMA</span></div>
                       <i />
                     </div>
-                    <span className="version-chip cinema-version">v<span data-product-version="cinema">2.2.1</span></span>
+                    <span className="version-chip cinema-version">v<span data-product-version="cinema">2.2.2</span></span>
                   </>
                 )}
               </div>
@@ -149,9 +155,11 @@ export default function Home() {
                 <ul aria-label={`${project.name} technologies and themes`}>
                   {project.tags.map((tag) => <li key={tag}>{tag}</li>)}
                 </ul>
+                <a className="project-website-button" href={project.site}>
+                  Visit {project.name} website <span aria-hidden="true">↗</span>
+                </a>
                 <div className="project-links">
                   <a className="project-download" data-product-download={project.id} href={project.download}>Direct download <span aria-hidden="true">↓</span></a>
-                  <a href={project.site}>Visit project <span aria-hidden="true">↗</span></a>
                   <a href={project.repo} target="_blank" rel="noreferrer">Source code <span aria-hidden="true">↗</span></a>
                 </div>
               </div>
