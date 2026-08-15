@@ -36,6 +36,7 @@ export default function Home() {
         </a>
         <nav aria-label="Minova ecosystem navigation">
           <a className="nav-projects" href="#projects">Projects</a>
+          <a className="nav-product" href="/brand-kit/minova-brand-guide.html">Brand</a>
           <a className="nav-product" href="https://minova-chromium.github.io/Minova-Chromium/">Chromium</a>
           <a className="nav-product" href="https://minova-chromium.github.io/Minova-Android-Tv-Cinema-Application/">Cinema</a>
           <a className="nav-github" href="https://github.com/minova-chromium" target="_blank" rel="noreferrer">
@@ -189,7 +190,7 @@ export default function Home() {
 
       <footer>
         <a className="brand footer-brand" href="#top"><img src="/brand/minova-lockup-dark.svg" alt="Minova" /></a>
-        <p><a href="https://minova-chromium.github.io/Minova-Chromium/">Chromium</a> · <a href="https://minova-chromium.github.io/Minova-Android-Tv-Cinema-Application/">Cinema</a></p>
+        <p><a href="/brand-kit/minova-brand-guide.html">Brand</a> · <a href="https://minova-chromium.github.io/Minova-Chromium/">Chromium</a> · <a href="https://minova-chromium.github.io/Minova-Android-Tv-Cinema-Application/">Cinema</a></p>
         <span>© {new Date().getFullYear()} Minova</span>
       </footer>
     </main>

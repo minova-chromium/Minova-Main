@@ -46,7 +46,13 @@ await writeFile(resolve(output, "404.html"), html, "utf8");
 await writeFile(resolve(output, ".nojekyll"), "", "utf8");
 
 const exported = await readFile(resolve(output, "index.html"), "utf8");
-if (!exported.includes("Minova Chromium") || !exported.includes("./ecosystem.js")) {
+const brandGuide = await readFile(resolve(output, "brand-kit", "minova-brand-guide.html"), "utf8");
+if (
+  !exported.includes("Minova Chromium") ||
+  !exported.includes("./ecosystem.js") ||
+  !exported.includes("./brand-kit/minova-brand-guide.html") ||
+  !brandGuide.includes("One system. Different experiences.")
+) {
   throw new Error("Static export validation failed");
 }
 
