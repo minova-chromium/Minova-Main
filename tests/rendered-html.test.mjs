@@ -21,5 +21,9 @@ test("renders the Minova project hub", async () => {
   assert.match(html, /Minova Chromium/);
   assert.match(html, /Minova Cinema/);
   assert.match(html, /minova-chromium\.github\.io\/Minova-Chromium/);
+  assert.match(html, /Minova-Cinema-2\.2\.1\.apk/);
+  assert.match(html, /data-product-download="chromium"/);
+  assert.match(html, /data-product-download="cinema"/);
+  assert.doesNotMatch(html, /In development|NOW BUILDING/i);
   assert.doesNotMatch(html, /codex-preview|react-loading-skeleton/i);
 });

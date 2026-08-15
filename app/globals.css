@@ -94,6 +94,33 @@ nav > a:hover, nav > a:focus-visible { color: var(--white); }
 }
 .hero-intro { max-width: 620px; margin: 36px 0 0; color: var(--steel-300); font-size: 18px; line-height: 1.7; }
 .hero-actions { margin-top: 38px; display: flex; flex-wrap: wrap; gap: 12px; }
+.hero-downloads {
+  margin-top: 22px;
+  padding-top: 18px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  border-top: 1px solid var(--line);
+}
+.hero-downloads > span {
+  margin-right: 4px;
+  color: var(--steel-500);
+  font: 700 9px/1 var(--mono);
+  letter-spacing: .14em;
+}
+.hero-downloads a {
+  padding: 9px 12px;
+  border: 1px solid var(--night-700);
+  border-radius: 6px;
+  color: var(--steel-100);
+  font-size: 11px;
+  font-weight: 700;
+  transition: border-color 180ms cubic-bezier(.2,0,0,1), color 180ms cubic-bezier(.2,0,0,1);
+}
+.hero-downloads a:hover,
+.hero-downloads a:focus-visible { border-color: var(--cyan); color: var(--cyan); }
+.hero-downloads b { margin-left: 7px; color: var(--cyan); }
 .button {
   min-height: 52px;
   padding: 0 22px;
@@ -162,6 +189,7 @@ nav > a:hover, nav > a:focus-visible { color: var(--white); }
 .browser-page span { display: block; width: 72%; height: 8px; margin-top: 20px; border-radius: 3px; background: var(--night-700); box-shadow: 0 18px 0 var(--night-800), 0 36px 0 var(--night-850); }
 .version-chip, .build-chip { position: absolute; z-index: 2; padding: 8px 11px; border-radius: 6px; font: 700 9px/1 var(--mono); letter-spacing: .07em; }
 .version-chip { right: 8%; top: 12%; color: var(--night-950); background: var(--cyan); }
+.cinema-version { left: 8%; right: auto; background: var(--teal); }
 .project-content { padding: 30px; }
 .project-content h3 { margin: 0; font-family: var(--display); font-size: 31px; font-weight: 560; letter-spacing: -.035em; }
 .project-content > p { min-height: 76px; margin: 16px 0 24px; color: var(--steel-300); font-size: 14px; line-height: 1.65; }
@@ -170,12 +198,12 @@ nav > a:hover, nav > a:focus-visible { color: var(--white); }
 .project-links { margin-top: 30px; padding-top: 22px; display: flex; flex-wrap: wrap; gap: 24px; border-top: 1px solid var(--line); }
 .project-links a { font-size: 12px; font-weight: 700; }
 .project-links a:hover, .project-links a:focus-visible { color: var(--cyan); }
+.project-links .project-download { color: var(--cyan); }
 .tv-shell { position: relative; z-index: 1; width: 68%; }
 .tv-screen { aspect-ratio: 16/9; display: grid; place-items: center; border: 6px solid var(--night-700); border-radius: 8px; background: radial-gradient(circle at center, #0d2d4c, var(--night-950) 72%); box-shadow: 0 25px 60px rgba(0,0,0,.5); }
 .tv-screen img { width: 62px; height: 62px; }
 .tv-screen span { position: absolute; bottom: 22%; color: var(--steel-500); font: 800 7px/1 var(--mono); letter-spacing: .18em; }
 .tv-shell > i { display: block; width: 34%; height: 6px; margin: 8px auto 0; border-radius: 3px; background: var(--night-700); }
-.build-chip { left: 8%; top: 12%; color: var(--cyan); border: 1px solid rgba(22,216,228,.3); background: rgba(22,216,228,.08); }
 
 .about-section { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); max-width: 1440px; margin: 0 auto; padding: 140px 5vw; display: grid; grid-template-columns: .8fr 1.2fr; gap: 9vw; }
 .about-lead { margin: 0; max-width: 700px; font-family: var(--display); font-size: clamp(22px, 2.4vw, 35px); line-height: 1.45; letter-spacing: -.025em; color: var(--steel-100); }
@@ -194,6 +222,8 @@ nav > a:hover, nav > a:focus-visible { color: var(--white); }
 
 footer { max-width: 1440px; min-height: 120px; margin: 0 auto; padding: 0 5vw; display: grid; grid-template-columns: 1fr 1fr 1fr; align-items: center; color: var(--steel-500); font-size: 10px; }
 footer p { text-align: center; }
+footer p a { color: var(--steel-300); }
+footer p a:hover, footer p a:focus-visible { color: var(--cyan); }
 footer > span { text-align: right; }
 .footer-brand img { width: 130px; }
 
@@ -212,12 +242,16 @@ footer > span { text-align: right; }
 
 @media (max-width: 720px) {
   .site-header { height: 76px; }
-  nav > a:not(.nav-github) { display: none; }
+  nav { gap: 12px; font-size: 11px; }
+  .nav-projects, .nav-github { display: none; }
   .brand img { width: 132px; }
   .hero { min-height: auto; padding: 132px 6vw 80px; background-size: 48px 48px, 48px 48px, auto, auto; }
   .hero h1 { font-size: clamp(54px, 17vw, 78px); }
   .hero-intro { font-size: 16px; }
   .hero-actions { align-items: stretch; flex-direction: column; }
+  .hero-downloads { align-items: stretch; flex-direction: column; }
+  .hero-downloads > span { margin-bottom: 3px; }
+  .hero-downloads a { display: flex; justify-content: space-between; padding: 12px; }
   .button { width: 100%; }
   .hero-stage { min-height: 410px; margin-top: 20px; }
   .stage-card { width: 92%; min-height: 310px; transform: rotateY(-3deg); }

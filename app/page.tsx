@@ -1,22 +1,29 @@
 const projects = [
   {
+    id: "chromium",
     name: "Minova Chromium",
-    eyebrow: "Desktop browser · Live",
+    eyebrow: "Windows desktop · Version 1.0.5",
     description:
-      "A customizable Chromium browser with classic and workspace interfaces, vertical tabs, Split View, encrypted passwords, extensions, media tools, and Streaming Mode.",
-    tags: ["Chromium", "Desktop", "Privacy", "Personalization"],
+      "A customizable Chromium browser with classic, workspace, and Safari-style interfaces, vertical tabs, Split View, encrypted passwords, extensions, media tools, and Streaming Mode.",
+    tags: ["Chromium", "Windows", "Privacy", "Personalization"],
     site: "https://minova-chromium.github.io/Minova-Chromium/",
     repo: "https://github.com/minova-chromium/Minova-Chromium",
-    featured: true,
+    download:
+      "https://github.com/minova-chromium/Minova-Chromium/releases/download/v1.0.5/Minova-Chromium-Setup-1.0.5.exe",
   },
   {
+    id: "cinema",
     name: "Minova Cinema",
-    eyebrow: "Android TV · In development",
+    eyebrow: "Android TV · Version 2.2.1",
     description:
-      "A cinema-first application designed for the big screen. The repository is ready, and the experience is currently being shaped.",
-    tags: ["Android TV", "Cinema", "Living room"],
-    repo: "https://github.com/minova-chromium/Minova-Android-Tv-Cinema-Application",
-    featured: false,
+      "A finished, cinema-first Android TV client that brings a Plex library to the big screen with remote-first navigation, direct play, 4K support, and private local connections.",
+    tags: ["Android TV", "Plex", "4K playback", "Living room"],
+    site:
+      "https://minova-chromium.github.io/Minova-Android-Tv-Cinema-Application/",
+    repo:
+      "https://github.com/minova-chromium/Minova-Android-Tv-Cinema-Application",
+    download:
+      "https://github.com/minova-chromium/Minova-Android-Tv-Cinema-Application/releases/download/v2.2.1/Minova-Cinema-2.2.1.apk",
   },
 ];
 
@@ -27,9 +34,10 @@ export default function Home() {
         <a className="brand" href="#top" aria-label="Minova home">
           <img src="/brand/minova-lockup-dark.svg" alt="Minova" />
         </a>
-        <nav aria-label="Main navigation">
-          <a href="#projects">Projects</a>
-          <a href="#about">About</a>
+        <nav aria-label="Minova ecosystem navigation">
+          <a className="nav-projects" href="#projects">Projects</a>
+          <a className="nav-product" href="https://minova-chromium.github.io/Minova-Chromium/">Chromium</a>
+          <a className="nav-product" href="https://minova-chromium.github.io/Minova-Android-Tv-Cinema-Application/">Cinema</a>
           <a className="nav-github" href="https://github.com/minova-chromium" target="_blank" rel="noreferrer">
             GitHub <span aria-hidden="true">↗</span>
           </a>
@@ -53,6 +61,11 @@ export default function Home() {
               View GitHub <span aria-hidden="true">↗</span>
             </a>
           </div>
+          <div className="hero-downloads" aria-label="Direct application downloads">
+            <span>DIRECT DOWNLOADS</span>
+            <a data-product-download="chromium" href={projects[0].download}>Chromium for Windows <b aria-hidden="true">↓</b></a>
+            <a data-product-download="cinema" href={projects[1].download}>Cinema for Android TV <b aria-hidden="true">↓</b></a>
+          </div>
         </div>
 
         <div className="hero-stage" aria-label="Minova project overview">
@@ -60,22 +73,22 @@ export default function Home() {
           <div className="stage-card">
             <div className="window-bar">
               <span /><span /><span />
-              <small>minova://projects</small>
+              <small>minova://ecosystem</small>
             </div>
             <div className="stage-body">
               <img src="/brand/minova-symbol-color.svg" alt="" />
-              <p>INDEPENDENT BY DESIGN</p>
+              <p>ONE IDENTITY / TWO EXPERIENCES</p>
               <strong>Ideas deserve<br />a working version.</strong>
               <div className="stage-line"><span /></div>
             </div>
           </div>
           <div className="floating-card floating-live">
             <span className="status-dot" />
-            <div><small>LIVE PROJECT</small><strong>Minova Chromium</strong></div>
+            <div><small>WINDOWS · <span data-product-version="chromium">1.0.5</span></small><strong>Minova Chromium</strong></div>
           </div>
           <div className="floating-card floating-build">
             <span className="mini-icon">TV</span>
-            <div><small>NOW BUILDING</small><strong>Minova Cinema</strong></div>
+            <div><small>ANDROID TV · <span data-product-version="cinema">2.2.1</span></small><strong>Minova Cinema</strong></div>
           </div>
         </div>
       </section>
@@ -91,17 +104,17 @@ export default function Home() {
         <div className="section-heading">
           <div>
             <p className="section-number">01 / PROJECTS</p>
-            <h2>Ideas made<br /><em>tangible.</em></h2>
+            <h2>One family.<br /><em>Two paths.</em></h2>
           </div>
           <p>
-            Each project begins with a problem I want to understand—or simply
-            an experience I wish existed.
+            The same calm graphite foundation and prismatic Minova identity,
+            shaped around two very different experiences.
           </p>
         </div>
 
         <div className="project-grid">
           {projects.map((project, index) => (
-            <article className={`project-card ${project.featured ? "project-featured" : ""}`} key={project.name}>
+            <article className="project-card" key={project.name}>
               <div className="project-topline">
                 <span>{String(index + 1).padStart(2, "0")}</span>
                 <p>{project.eyebrow}</p>
@@ -117,7 +130,7 @@ export default function Home() {
                         <span />
                       </div>
                     </div>
-                    <span className="version-chip">v1.0.5</span>
+                    <span className="version-chip">v<span data-product-version="chromium">1.0.5</span></span>
                   </>
                 ) : (
                   <>
@@ -125,7 +138,7 @@ export default function Home() {
                       <div className="tv-screen"><img src="/brand/minova-symbol-color.svg" alt="" /><span>MINOVA CINEMA</span></div>
                       <i />
                     </div>
-                    <span className="build-chip">IN DEVELOPMENT</span>
+                    <span className="version-chip cinema-version">v<span data-product-version="cinema">2.2.1</span></span>
                   </>
                 )}
               </div>
@@ -136,7 +149,8 @@ export default function Home() {
                   {project.tags.map((tag) => <li key={tag}>{tag}</li>)}
                 </ul>
                 <div className="project-links">
-                  {project.site && <a href={project.site} target="_blank" rel="noreferrer">Visit project <span aria-hidden="true">↗</span></a>}
+                  <a className="project-download" data-product-download={project.id} href={project.download}>Direct download <span aria-hidden="true">↓</span></a>
+                  <a href={project.site}>Visit project <span aria-hidden="true">↗</span></a>
                   <a href={project.repo} target="_blank" rel="noreferrer">Source code <span aria-hidden="true">↗</span></a>
                 </div>
               </div>
@@ -175,7 +189,7 @@ export default function Home() {
 
       <footer>
         <a className="brand footer-brand" href="#top"><img src="/brand/minova-lockup-dark.svg" alt="Minova" /></a>
-        <p>Independent software projects, built with curiosity.</p>
+        <p><a href="https://minova-chromium.github.io/Minova-Chromium/">Chromium</a> · <a href="https://minova-chromium.github.io/Minova-Android-Tv-Cinema-Application/">Cinema</a></p>
         <span>© {new Date().getFullYear()} Minova</span>
       </footer>
     </main>

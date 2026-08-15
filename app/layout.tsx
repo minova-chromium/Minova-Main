@@ -24,6 +24,9 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
+      <head>
+        <script src="/ecosystem.js" defer />
+      </head>
       <body>{children}</body>
     </html>
   );

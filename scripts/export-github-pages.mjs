@@ -29,10 +29,11 @@ if (!response.ok) {
 
 let html = await response.text();
 
-// This site is server-rendered and needs no client JavaScript. Removing the
-// framework scripts creates a small, durable static page for GitHub Pages.
+// Remove only framework hydration scripts. Keep Minova's small release-aware
+// ecosystem script so download links can follow new GitHub releases.
 html = html
-  .replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, "")
+  .replace(/<script\b(?=[^>]*src=["'][^"']*_next\/)[^>]*>[\s\S]*?<\/script>/gi, "")
+  .replace(/<script\b(?![^>]*\bsrc=)[^>]*>[\s\S]*?<\/script>/gi, "")
   .replace(/<link\b[^>]*rel=["']modulepreload["'][^>]*>/gi, "")
   .replace(/((?:href|src)=["'])\/(?!\/)/g, "$1./")
   .replace(/<html([^>]*)>/i, '<html$1 data-host="github-pages">');
@@ -45,7 +46,7 @@ await writeFile(resolve(output, "404.html"), html, "utf8");
 await writeFile(resolve(output, ".nojekyll"), "", "utf8");
 
 const exported = await readFile(resolve(output, "index.html"), "utf8");
-if (!exported.includes("Minova Chromium") || !exported.includes("./brand/minova-symbol-color.svg")) {
+if (!exported.includes("Minova Chromium") || !exported.includes("./ecosystem.js")) {
   throw new Error("Static export validation failed");
 }
 
