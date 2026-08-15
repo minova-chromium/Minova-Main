@@ -14,14 +14,16 @@ Clean, unchanged backups of the logo files currently used across the Minova webs
 - `chromium/minova-wordmark-supplied.svg` — supplied `minova logo (1).svg`
 - `chromium/chromium-wordmark-supplied.svg` — supplied `chromium.svg`
 - `chromium/chromium-wordmark-v2.svg` — archived first geometric companion draft
-- `chromium/chromium-wordmark-v3.svg` — active heavy CHROMIUM wordmark matched to MINOVA
+- `chromium/chromium-wordmark-v3.svg` — archived heavy CHROMIUM companion draft
+- `chromium/chromium-wordmark-user.png` — active user-created CHROMIUM artwork
+- `chromium/chromium-wordmark-active.svg` — active cropped website wrapper for the user-created artwork
 - `chromium/minova-browser-icon.png` — current Chromium website/product icon
 - `chromium/minova-lockup-legacy.png` — previous combined lockup
 - `chromium/minova-wordmark-legacy.png` — previous raster wordmark
 
-The two supplied SVGs are preserved byte-for-byte. The Chromium website keeps
-using the supplied MINOVA artwork and pairs it with the custom heavy v3
-CHROMIUM wordmark in its header, footer, and homepage hero.
+The supplied SVGs and the new user-created PNG are preserved byte-for-byte. The
+Chromium website keeps using the supplied MINOVA artwork unchanged and pairs it
+with the user-created CHROMIUM artwork in its header, footer, and homepage hero.
 
 ## Cinema
 

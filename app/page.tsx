@@ -2,7 +2,8 @@ const projects = [
   {
     id: "chromium",
     name: "Minova Chromium",
-    eyebrow: "Windows desktop · Version 1.0.5",
+    platform: "Windows desktop",
+    version: "1.0.5",
     description:
       "A customizable Chromium browser with classic, workspace, and Safari-style interfaces, vertical tabs, Split View, encrypted passwords, extensions, media tools, and Streaming Mode.",
     tags: ["Chromium", "Windows", "Privacy", "Personalization"],
@@ -14,7 +15,8 @@ const projects = [
   {
     id: "cinema",
     name: "Minova Cinema",
-    eyebrow: "Android TV · Version 2.2.2",
+    platform: "Android TV",
+    version: "2.4.1",
     description:
       "A finished, cinema-first Android TV client that brings a Plex library to the big screen with remote-first navigation, direct play, 4K support, and private local connections.",
     tags: ["Android TV", "Plex", "4K playback", "Living room"],
@@ -23,7 +25,7 @@ const projects = [
     repo:
       "https://github.com/minova-chromium/Minova-Android-Tv-Cinema-Application",
     download:
-      "https://github.com/minova-chromium/Minova-Android-Tv-Cinema-Application/releases/download/v2.2.2/Minova-Cinema-2.2.2.apk",
+      "https://github.com/minova-chromium/Minova-Android-Tv-Cinema-Application/releases/download/v2.4.1/Minova-Cinema-2.4.1.apk",
   },
 ];
 
@@ -95,7 +97,7 @@ export default function Home() {
           </div>
           <div className="floating-card floating-build">
             <span className="mini-icon">TV</span>
-            <div><small>ANDROID TV · <span data-product-version="cinema">2.2.2</span></small><strong>Minova Cinema</strong></div>
+            <div><small>ANDROID TV · <span data-product-version="cinema">2.4.1</span></small><strong>Minova Cinema</strong></div>
           </div>
         </div>
       </section>
@@ -124,7 +126,7 @@ export default function Home() {
             <article className="project-card" key={project.name}>
               <div className="project-topline">
                 <span>{String(index + 1).padStart(2, "0")}</span>
-                <p>{project.eyebrow}</p>
+                <p>{project.platform} · Version <span data-product-version={project.id}>{project.version}</span></p>
               </div>
               <div className={`project-visual visual-${index + 1}`} aria-hidden="true">
                 {index === 0 ? (
@@ -145,7 +147,7 @@ export default function Home() {
                       <div className="tv-screen"><img src="/brand/minova-symbol-color.svg" alt="" /><span>MINOVA CINEMA</span></div>
                       <i />
                     </div>
-                    <span className="version-chip cinema-version">v<span data-product-version="cinema">2.2.2</span></span>
+                    <span className="version-chip cinema-version">v<span data-product-version="cinema">2.4.1</span></span>
                   </>
                 )}
               </div>
