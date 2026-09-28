@@ -7,9 +7,13 @@
       api: "https://api.github.com/repos/minova-chromium/Minova-Chromium/releases?per_page=10",
       asset: /Minova-Chromium-Setup-.*\.exe$/i,
     },
-    cinema: {
+    "cinema-android": {
       api: "https://api.github.com/repos/minova-chromium/Minova-Android-Tv-Cinema-Application/releases?per_page=10",
       asset: /Minova-Cinema-.*\.apk$/i,
+    },
+    "cinema-windows": {
+      api: "https://api.github.com/repos/minova-chromium/Minova-Cinema-Windows/releases?per_page=10",
+      asset: /Minova-Cinema-Desktop-.*-Setup\.exe$/i,
     },
   };
 

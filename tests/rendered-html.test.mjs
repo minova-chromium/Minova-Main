@@ -22,9 +22,15 @@ test("renders the Minova project hub", async () => {
   assert.match(html, /Minova Chromium/);
   assert.match(html, /Minova Cinema/);
   assert.match(html, /minova-chromium\.github\.io\/Minova-Chromium/);
-  assert.match(html, /Minova-Cinema-2\.4\.1\.apk/);
+  assert.match(html, /Minova-Cinema-2\.9\.7\.apk/);
+  assert.match(html, /Minova-Cinema-Desktop-1\.0\.3-Setup\.exe/);
   assert.match(html, /data-product-download="chromium"/);
-  assert.match(html, /data-product-download="cinema"/);
+  assert.match(html, /data-product-download="cinema-android"/);
+  assert.match(html, /data-product-download="cinema-windows"/);
+  assert.match(html, /Android \+ Windows/);
+  assert.match(html, /Phone &amp; tablet/);
+  assert.match(html, /Android source/);
+  assert.match(html, /Windows source/);
   assert.match(html, /Visit Chromium website/);
   assert.match(html, /Visit Cinema website/);
   assert.ok((html.match(/project-website-button/g) || []).length >= 2);
@@ -37,6 +43,8 @@ test("checks stable GitHub releases and keeps direct downloads current", async (
   const script = await readFile(new URL("../public/ecosystem.js", import.meta.url), "utf8");
   assert.match(script, /Minova-Chromium\/releases\?per_page=10/);
   assert.match(script, /Minova-Android-Tv-Cinema-Application\/releases\?per_page=10/);
+  assert.match(script, /Minova-Cinema-Windows\/releases\?per_page=10/);
+  assert.match(script, /Minova-Cinema-Desktop-\.\*-Setup\\\.exe/);
   assert.match(script, /!release\.draft && !release\.prerelease/);
   assert.match(script, /window\.setInterval\(\(\) => refreshAll\(true\)/);
   assert.match(script, /data-product-download/);

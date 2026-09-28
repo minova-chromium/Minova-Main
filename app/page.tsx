@@ -3,29 +3,59 @@ const projects = [
     id: "chromium",
     name: "Minova Chromium",
     platform: "Windows desktop",
-    version: "1.0.5",
+    versions: [{ id: "chromium", label: "Version", value: "1.0.5" }],
     description:
       "A customizable Chromium browser with classic, workspace, and Safari-style interfaces, vertical tabs, Split View, encrypted passwords, extensions, media tools, and Streaming Mode.",
     tags: ["Chromium", "Windows", "Privacy", "Personalization"],
     site: "https://minova-chromium.github.io/Minova-Chromium/",
-    repo: "https://github.com/minova-chromium/Minova-Chromium",
-    download:
-      "https://github.com/minova-chromium/Minova-Chromium/releases/download/v1.0.5/Minova-Chromium-Setup-1.0.5.exe",
+    websiteLabel: "Visit Chromium website",
+    downloads: [
+      {
+        id: "chromium",
+        label: "Chromium for Windows",
+        url: "https://github.com/minova-chromium/Minova-Chromium/releases/download/v1.0.5/Minova-Chromium-Setup-1.0.5.exe",
+      },
+    ],
+    sources: [
+      { label: "Source code", url: "https://github.com/minova-chromium/Minova-Chromium" },
+    ],
   },
   {
     id: "cinema",
     name: "Minova Cinema",
-    platform: "Android TV",
-    version: "2.4.1",
+    platform: "Android + Windows",
+    versions: [
+      { id: "cinema-android", label: "Android", value: "2.9.7" },
+      { id: "cinema-windows", label: "Windows", value: "1.0.3" },
+    ],
     description:
-      "A finished, cinema-first Android TV client that brings a Plex library to the big screen with remote-first navigation, direct play, 4K support, and private local connections.",
-    tags: ["Android TV", "Plex", "4K playback", "Living room"],
+      "A private, cinema-first Plex client shaped for every screen: touch-first Android phones and tablets, remote-first Android TV, and a native Windows desktop experience.",
+    tags: ["Windows", "Android", "Phone & tablet", "Android TV", "Plex"],
     site:
       "https://minova-chromium.github.io/Minova-Android-Tv-Cinema-Application/",
-    repo:
-      "https://github.com/minova-chromium/Minova-Android-Tv-Cinema-Application",
-    download:
-      "https://github.com/minova-chromium/Minova-Android-Tv-Cinema-Application/releases/download/v2.4.1/Minova-Cinema-2.4.1.apk",
+    websiteLabel: "Visit Cinema website",
+    downloads: [
+      {
+        id: "cinema-android",
+        label: "Cinema for Android",
+        url: "https://github.com/minova-chromium/Minova-Android-Tv-Cinema-Application/releases/download/v2.9.7/Minova-Cinema-2.9.7.apk",
+      },
+      {
+        id: "cinema-windows",
+        label: "Cinema for Windows",
+        url: "https://github.com/minova-chromium/Minova-Cinema-Windows/releases/download/v1.0.3/Minova-Cinema-Desktop-1.0.3-Setup.exe",
+      },
+    ],
+    sources: [
+      {
+        label: "Android source",
+        url: "https://github.com/minova-chromium/Minova-Android-Tv-Cinema-Application",
+      },
+      {
+        label: "Windows source",
+        url: "https://github.com/minova-chromium/Minova-Cinema-Windows",
+      },
+    ],
   },
 ];
 
@@ -66,14 +96,16 @@ export default function Home() {
           </div>
           <div className="hero-downloads" aria-label="Direct application downloads">
             <span>DIRECT DOWNLOADS</span>
-            <div className="hero-download-item">
-              <a className="hero-project-link" href={projects[0].site}>Visit Chromium website <b aria-hidden="true">↗</b></a>
-              <a data-product-download="chromium" href={projects[0].download}>Chromium for Windows <b aria-hidden="true">↓</b></a>
-            </div>
-            <div className="hero-download-item">
-              <a className="hero-project-link" href={projects[1].site}>Visit Cinema website <b aria-hidden="true">↗</b></a>
-              <a data-product-download="cinema" href={projects[1].download}>Cinema for Android TV <b aria-hidden="true">↓</b></a>
-            </div>
+            {projects.map((project) => (
+              <div className="hero-download-item" key={project.id}>
+                <a className="hero-project-link" href={project.site}>{project.websiteLabel} <b aria-hidden="true">↗</b></a>
+                {project.downloads.map((download) => (
+                  <a data-product-download={download.id} href={download.url} key={download.id}>
+                    {download.label} <b aria-hidden="true">↓</b>
+                  </a>
+                ))}
+              </div>
+            ))}
           </div>
         </div>
 
@@ -96,8 +128,8 @@ export default function Home() {
             <div><small>WINDOWS · <span data-product-version="chromium">1.0.5</span></small><strong>Minova Chromium</strong></div>
           </div>
           <div className="floating-card floating-build">
-            <span className="mini-icon">TV</span>
-            <div><small>ANDROID TV · <span data-product-version="cinema">2.4.1</span></small><strong>Minova Cinema</strong></div>
+            <span className="mini-icon">A / ⊞</span>
+            <div><small>ANDROID <span data-product-version="cinema-android">2.9.7</span> · WINDOWS <span data-product-version="cinema-windows">1.0.3</span></small><strong>Minova Cinema</strong></div>
           </div>
         </div>
       </section>
@@ -126,7 +158,13 @@ export default function Home() {
             <article className="project-card" key={project.name}>
               <div className="project-topline">
                 <span>{String(index + 1).padStart(2, "0")}</span>
-                <p>{project.platform} · Version <span data-product-version={project.id}>{project.version}</span></p>
+                <p>
+                  {project.platform} · {project.versions.map((release, releaseIndex) => (
+                    <span key={release.id}>
+                      {releaseIndex > 0 ? " / " : ""}{release.label} <span data-product-version={release.id}>{release.value}</span>
+                    </span>
+                  ))}
+                </p>
               </div>
               <div className={`project-visual visual-${index + 1}`} aria-hidden="true">
                 {index === 0 ? (
@@ -147,7 +185,7 @@ export default function Home() {
                       <div className="tv-screen"><img src="/brand/minova-symbol-color.svg" alt="" /><span>MINOVA CINEMA</span></div>
                       <i />
                     </div>
-                    <span className="version-chip cinema-version">v<span data-product-version="cinema">2.4.1</span></span>
+                    <span className="version-chip cinema-version">A <span data-product-version="cinema-android">2.9.7</span> · W <span data-product-version="cinema-windows">1.0.3</span></span>
                   </>
                 )}
               </div>
@@ -161,8 +199,12 @@ export default function Home() {
                   Visit {project.name} website <span aria-hidden="true">↗</span>
                 </a>
                 <div className="project-links">
-                  <a className="project-download" data-product-download={project.id} href={project.download}>Direct download <span aria-hidden="true">↓</span></a>
-                  <a href={project.repo} target="_blank" rel="noreferrer">Source code <span aria-hidden="true">↗</span></a>
+                  {project.downloads.map((download) => (
+                    <a className="project-download" data-product-download={download.id} href={download.url} key={download.id}>{download.label} <span aria-hidden="true">↓</span></a>
+                  ))}
+                  {project.sources.map((source) => (
+                    <a href={source.url} target="_blank" rel="noreferrer" key={source.url}>{source.label} <span aria-hidden="true">↗</span></a>
+                  ))}
                 </div>
               </div>
             </article>
