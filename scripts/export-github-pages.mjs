@@ -33,7 +33,7 @@ let html = await response.text();
 // ecosystem script so download links can follow new GitHub releases.
 html = html
   .replace(/<script\b(?=[^>]*src=["'][^"']*_next\/)[^>]*>[\s\S]*?<\/script>/gi, "")
-  .replace(/<script\b(?![^>]*\bsrc=)[^>]*>[\s\S]*?<\/script>/gi, "")
+  .replace(/<script\b(?![^>]*\bsrc=)(?![^>]*\btype=["']application\/ld\+json["'])[^>]*>[\s\S]*?<\/script>/gi, "")
   .replace(/<link\b[^>]*rel=["']modulepreload["'][^>]*>/gi, "")
   .replace(/((?:href|src)=["'])\/(?!\/)/g, "$1./")
   .replace(/<html([^>]*)>/i, '<html$1 data-host="github-pages">');
@@ -51,6 +51,8 @@ const brandIndex = await readFile(resolve(output, "brand-kit", "index.html"), "u
 const brandPage = await readFile(resolve(output, "brand.html"), "utf8");
 if (
   !exported.includes("Minova Chromium") ||
+  !exported.includes('"name":"Minova Cinema"') ||
+  !exported.includes("application/ld+json") ||
   !exported.includes("./ecosystem.js") ||
   !exported.includes("./brand.html") ||
   !brandGuide.includes("One system. Different experiences.") ||

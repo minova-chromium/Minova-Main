@@ -21,6 +21,9 @@ test("renders the Minova project hub", async () => {
   assert.match(html, /Shape your/);
   assert.match(html, /Minova Chromium/);
   assert.match(html, /Minova Cinema/);
+  assert.match(html, /application\/ld\+json/);
+  assert.match(html, /Minova Cinema Plex client/);
+  assert.match(html, /rel="canonical" href="https:\/\/minova-chromium\.github\.io\/Minova-Main\/"/);
   assert.match(html, /minova-chromium\.github\.io\/Minova-Chromium/);
   assert.match(html, /Minova-Cinema-2\.9\.7\.apk/);
   assert.match(html, /Minova-Cinema-Desktop-1\.0\.3-Setup\.exe/);
@@ -37,6 +40,15 @@ test("renders the Minova project hub", async () => {
   assert.match(html, /href="\/brand\.html"/);
   assert.doesNotMatch(html, /In development|NOW BUILDING/i);
   assert.doesNotMatch(html, /codex-preview|react-loading-skeleton/i);
+});
+
+test("publishes crawl discovery files for the Minova hub", async () => {
+  const robots = await readFile(new URL("../public/robots.txt", import.meta.url), "utf8");
+  const sitemap = await readFile(new URL("../public/sitemap.xml", import.meta.url), "utf8");
+  assert.match(robots, /Allow: \/\s/);
+  assert.match(robots, /Minova-Main\/sitemap\.xml/);
+  assert.match(sitemap, /Minova-Main\//);
+  assert.match(sitemap, /brand\.html/);
 });
 
 test("checks stable GitHub releases and keeps direct downloads current", async () => {
