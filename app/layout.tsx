@@ -2,23 +2,23 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://minova-chromium.github.io/Minova-Main/"),
+  metadataBase: new URL("https://project-minova.com/"),
   title: "Minova | Shape your own path",
   description:
-    "The home of Minova: independent applications and experiments built with curiosity, including Minova Chromium and Minova Cinema.",
+    "Choose your Minova experience: Chromium, Cinema, MauGainZ, or your private Minova Cloud.",
   icons: {
     icon: "/favicon.svg",
     shortcut: "/favicon.svg",
   },
   alternates: {
-    canonical: "https://minova-chromium.github.io/Minova-Main/",
+    canonical: "https://project-minova.com/",
   },
   openGraph: {
     title: "Minova | Shape your own path",
     description: "Explore independent applications and experiments from Minova.",
     type: "website",
     siteName: "Minova",
-    url: "https://minova-chromium.github.io/Minova-Main/",
+    url: "https://project-minova.com/",
   },
   twitter: {
     card: "summary",
@@ -32,24 +32,24 @@ const organizationSchema = {
   "@graph": [
     {
       "@type": "Organization",
-      "@id": "https://minova-chromium.github.io/Minova-Main/#organization",
+      "@id": "https://project-minova.com/#organization",
       name: "Minova",
-      url: "https://minova-chromium.github.io/Minova-Main/",
-      logo: "https://minova-chromium.github.io/Minova-Main/brand/minova-symbol-color.svg",
+      url: "https://project-minova.com/",
+      logo: "https://project-minova.com/brand/minova-symbol-color.svg",
       sameAs: ["https://github.com/minova-chromium"],
     },
     {
       "@type": "SoftwareApplication",
-      "@id": "https://minova-chromium.github.io/Minova-Android-Tv-Cinema-Application/#software",
+      "@id": "https://cinema.project-minova.com/#software",
       name: "Minova Cinema",
       alternateName: "Minova Cinema Plex client",
-      url: "https://minova-chromium.github.io/Minova-Android-Tv-Cinema-Application/",
+      url: "https://cinema.project-minova.com/",
       description:
         "Minova Cinema is an independent, private Plex client for Android phones, tablets, Android TV, Google TV, and Windows PCs.",
       applicationCategory: "MultimediaApplication",
       operatingSystem: ["Android 10 or newer", "Windows 10", "Windows 11"],
       publisher: {
-        "@id": "https://minova-chromium.github.io/Minova-Main/#organization",
+        "@id": "https://project-minova.com/#organization",
       },
       offers: { "@type": "Offer", price: "0", priceCurrency: "EUR" },
       sameAs: [

@@ -18,25 +18,14 @@ test("renders the Minova project hub", async () => {
   assert.equal(response.status, 200);
   const html = await response.text();
   assert.match(html, /<title>Minova \| Shape your own path<\/title>/i);
-  assert.match(html, /Shape your/);
-  assert.match(html, /Minova Chromium/);
-  assert.match(html, /Minova Cinema/);
+  assert.match(html, /Where do you want to go/);
   assert.match(html, /application\/ld\+json/);
-  assert.match(html, /Minova Cinema Plex client/);
-  assert.match(html, /rel="canonical" href="https:\/\/minova-chromium\.github\.io\/Minova-Main\/"/);
-  assert.match(html, /minova-chromium\.github\.io\/Minova-Chromium/);
-  assert.match(html, /Minova-Cinema-2\.9\.7\.apk/);
-  assert.match(html, /Minova-Cinema-Desktop-1\.0\.3-Setup\.exe/);
-  assert.match(html, /data-product-download="chromium"/);
-  assert.match(html, /data-product-download="cinema-android"/);
-  assert.match(html, /data-product-download="cinema-windows"/);
-  assert.match(html, /Android \+ Windows/);
-  assert.match(html, /Phone &amp; tablet/);
-  assert.match(html, /Android source/);
-  assert.match(html, /Windows source/);
-  assert.match(html, /Visit Chromium website/);
-  assert.match(html, /Visit Cinema website/);
-  assert.ok((html.match(/project-website-button/g) || []).length >= 2);
+  assert.match(html, /rel="canonical" href="https:\/\/project-minova\.com\/?"/);
+  for (const domain of ["chromium", "cinema", "maugainz", "cloud"]) {
+    assert.ok(html.includes(`href="https://${domain}.project-minova.com/"`));
+  }
+  assert.match(html, /Invitation only/);
+  assert.match(html, /Development paused/);
   assert.match(html, /href="\/brand\.html"/);
   assert.doesNotMatch(html, /In development|NOW BUILDING/i);
   assert.doesNotMatch(html, /codex-preview|react-loading-skeleton/i);
@@ -46,8 +35,8 @@ test("publishes crawl discovery files for the Minova hub", async () => {
   const robots = await readFile(new URL("../public/robots.txt", import.meta.url), "utf8");
   const sitemap = await readFile(new URL("../public/sitemap.xml", import.meta.url), "utf8");
   assert.match(robots, /Allow: \/\s/);
-  assert.match(robots, /Minova-Main\/sitemap\.xml/);
-  assert.match(sitemap, /Minova-Main\//);
+  assert.match(robots, /project-minova\.com\/sitemap\.xml/);
+  assert.match(sitemap, /project-minova\.com\//);
   assert.match(sitemap, /brand\.html/);
 });
 

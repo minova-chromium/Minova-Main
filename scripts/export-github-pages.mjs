@@ -51,7 +51,7 @@ const brandIndex = await readFile(resolve(output, "brand-kit", "index.html"), "u
 const brandPage = await readFile(resolve(output, "brand.html"), "utf8");
 if (
   !exported.includes("Minova Chromium") ||
-  !exported.includes('"name":"Minova Cinema"') ||
+  !exported.includes("cloud.project-minova.com") || !exported.includes("MauGainZ") ||
   !exported.includes("application/ld+json") ||
   !exported.includes("./ecosystem.js") ||
   !exported.includes("./brand.html") ||
