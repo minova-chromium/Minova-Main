@@ -2,10 +2,13 @@
 
 (() => {
   // Preserve invitation links issued before Cloud moved to its own hostname.
-  if (new URLSearchParams(location.hash.slice(1)).has("invite")) {
+  function forwardInvitation() {
+    if (!new URLSearchParams(location.hash.slice(1)).has("invite")) return false;
     location.replace("https://cloud.project-minova.com/" + location.hash);
-    return;
+    return true;
   }
+  window.addEventListener("hashchange", forwardInvitation);
+  if (forwardInvitation()) return;
   if (!document.querySelector("[data-product-download]")) return;
   const refreshInterval = 15 * 60 * 1000;
   const products = {
